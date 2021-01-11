@@ -1,0 +1,66 @@
+#container{
+    
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+#container1{
+    background-image: url(./img/tableroCarro.jpg);
+    background-repeat: no-repeat;
+    width: 80%;
+    height: 700px;
+    flex-direction: row;
+}
+#container2{
+    width: 20%;
+    height: 100%;
+    flex-direction: row;
+    padding: 3%;
+}
+#tablero-carro{
+    width: 100%;
+    height: 100%;
+}
+
+.buttonStyle{
+    background:pink;
+    border-radius: 80%;
+    position: absolute;
+    
+}
+
+#button{
+    
+    left: 58%;
+    top: 45%;
+}
+
+#freno{
+    left: 50%;
+    top: 80%;
+}
+
+#clutch{
+    left: 35%;
+    top: 80%;
+}
+
+#estacionarias{
+    left: 67%;
+    top: 47%;
+}
+
+#arrancar{
+    left: 43%;
+    top: 80%;
+}
+
+#turnLeft{
+    left: 32%;
+    top: 45%;
+}
+
+#turnRight{
+    left: 52%;
+    top: 45%;
+}
