@@ -10,7 +10,7 @@ let giroDerecha;
 let giroIzquierda;
 
 class Car {
-    constructor(estado, frenoMano, cambio, clutch, freno, acelerador) {
+    constructor(estado, frenoMano, cambio, clutch, freno) {
         this.estado = estado;
         this.frenoMano = frenoMano;
         this.cambio = cambio;
