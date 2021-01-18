@@ -5,9 +5,12 @@ let direcccionalDerecha= document.querySelector('#turnRight');
 let direcccionalIzquierda= document.querySelector('#turnLeft');
 let estacionarias = document.querySelector('#estacionarias');
 let freno= document.querySelector('#freno');
+let arrancar=document.querySelector('#arranque');
+let estacionaria;
 let arranque=false;
 let giroDerecha;
 let giroIzquierda;
+
 
 class Car {
     constructor(estado, frenoMano, cambio, clutch, freno) {
@@ -16,7 +19,6 @@ class Car {
         this.cambio = cambio;
         this.clutch=clutch;
         this.freno=freno;
-        this.acelerador=acelerador
     }
     encender() {
         console.log('Verificando que el cambio esté en neutro.');
@@ -42,7 +44,7 @@ class Car {
 
             return this.estado;
         } else {
-            setTimeout(() => {mensaje.textContent="camibio: ${this.cambio}. Cambiando a Neutro";},6000);
+            setTimeout(() => {mensaje.textContent=`camibio: ${this.cambio}. Cambiando a Neutro`;},6000);
             this.cambio = "Neutro";
             setTimeout(() => {mensaje.textContent= 'El cambio está en neutro, verificando que el freno de mano esté activo';},9000);
             if(this.frenoMano === true){
@@ -133,10 +135,15 @@ class Car {
     } */
 
     frenar(){
-        clutch=true;
-        freno=true;
+        this.clutch=true;
+        this.freno=true;
         arranque=false;
         mensaje.textContent='carro parado';
+        setTimeout(()=>{
+            mensaje.textContent='clutch: ON, freno: ON'
+        },3000)
+        estacionaria=false;
+        
         
     }
 
@@ -144,7 +151,7 @@ class Car {
 
 
 
-let carro1 = new Car(false, false, 1, false, false,false);
+let carro1 = new Car(false, false, 1, false, false);
 
 
 
@@ -216,26 +223,41 @@ direcccionalIzquierda.addEventListener('click', function(){
 });
 
 estacionarias.addEventListener('click', function(){
+    estacionaria=true;
+    if(estacionaria === true){
 
-    if(carro1.estado=== true){
-        if(arranque===true){
-            setTimeout(()=> {
-                mensaje.textContent='Estacionarias activadas.'
-            },300);
-            
-
-            freno.addEventListener('click', function(){
-                carro1.frenar();
-            });
+        if(carro1.estado=== true){
+            if(arranque===true){
+                setTimeout(()=> {
+                    mensaje.textContent='Estacionarias activadas.'
+                },300);
+                
+                
+    
+                freno.addEventListener('click', function(){
+                    carro1.frenar();
+                });
+            }else{
+                setTimeout(()=> {
+                    mensaje.textContent='El carro está parado actulmente';
+                },300)
+            }
         }else{
             setTimeout(()=> {
-                mensaje.textContent='El carro está parado actulmente';
-            },300)
+                mensaje.textContent='El carro está apagado, enciendalo.';
+            },300);
         }
-    }else{
-        setTimeout(()=> {
-            mensaje.textContent='El carro está apagado, enciendalo.';
-        },300);
+
     }
     
+    
 });
+
+freno.addEventListener('click', ()=>{ 
+    if(arranque=false){
+        mensaje.textContent='El carro actualmente está detenido'
+    }else{
+        mensaje.textContent='Primero debe de activar las estacionarias'
+
+    }
+})
